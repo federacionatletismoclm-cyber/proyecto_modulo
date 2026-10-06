@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lámina Módulo Tecnificación</title>
+<style>
+  @page{size:A3 landscape;margin:0}
+  body{margin:0;background:#e9edf1;font-family:Arial,Helvetica,sans-serif}
+  .sheet{width:min(100vw,1480px);margin:10px auto;background:#fff;box-shadow:0 2px 8px #0003}
+  svg{display:block;width:100%;height:auto}
+  @media print{body{background:#fff}.sheet{width:420mm;margin:0;box-shadow:none}}
+</style>
+</head>
+<body>
+<div class="sheet"><svg id="S" viewBox="0 0 420 297" font-family="Arial,Helvetica,sans-serif"></svg></div>
+
+<script>
+const NS="http://www.w3.org/2000/svg";
+function el(p,n,a,t){const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(t!==undefined)e.textContent=t;p.appendChild(e);return e}
+const S=document.getElementById("S");
+
+// Marco de lámina (mm)
+el(S,"rect",{x:0,y:0,width:420,height:297,fill:"#fff"});
+el(S,"rect",{x:8,y:8,width:404,height:281,fill:"none",stroke:"#000","stroke-width":.6});
+
+// Dibujo en metros: 1 m = 4 mm (escala 1:250)
+const G=el(S,"g",{transform:"translate(22 40) scale(4)"});
+const W=92.0,H=43.4;
+const defs=el(S,"defs",{});
+const pat=el(defs,"pattern",{id:"hatch",width:1,height:1,patternUnits:"userSpaceOnUse",patternTransform:"rotate(45)"});
+el(pat,"line",{x1:0,y1:0,x2:0,y2:1,stroke:"#aaa","stroke-width":.12});
+
+// Contexto
+el(G,"text",{x:W/2,y:-3.4,"text-anchor":"middle","font-size":1.1,fill:"#777"},"CAMPO DE FÚTBOL DE CÉSPED ARTIFICIAL EXISTENTE (colindante al norte)");
+el(G,"line",{x1:0,y1:-2,x2:W,y2:-2,stroke:"#999","stroke-width":.08,"stroke-dasharray":".6 .4"});
+el(G,"rect",{x:W+1.6,y:4,width:3.2,height:30,fill:"url(#hatch)",stroke:"#999","stroke-width":.06});
+el(G,"text",{x:W+3.5,y:19,"font-size":.9,fill:"#777","text-anchor":"middle",transform:`rotate(-90 ${W+3.5} 19)`},"PARCELA EQUIPAMIENTO SOCIAL");
+
+// Recinto
+el(G,"rect",{x:0,y:0,width:W,height:H,fill:"#f3f5f0",stroke:"#000","stroke-width":.3});
+el(G,"line",{x1:0,y1:19.8,x2:W,y2:19.8,stroke:"#bbb","stroke-width":.07,"stroke-dasharray":".5 .4"});
+[[31,0],[58,0],[31,H],[58,H]].forEach(([x,y])=>{
+  el(G,"rect",{x,y:y-.4,width:3.5,height:.8,fill:"#fff",stroke:"#d9822b","stroke-width":.14});
+  el(G,"text",{x:x+1.75,y:y+(y?1.7:-.9),"text-anchor":"middle","font-size":.8,fill:"#a35a14"},"3,50");
+});
+
+// ZONA A · Velocidad: 8 calles x 60 m
+const ay=1.9,ah=9.76,lx=31.0,ll=60;
+el(G,"rect",{x:1.0,y:ay,width:30,height:ah,fill:"#f1d5cb",stroke:"#7a2a18","stroke-width":.12});
+el(G,"rect",{x:lx,y:ay,width:ll,height:ah,fill:"#c8553d",stroke:"#7a2a18","stroke-width":.12});
+for(let i=1;i<8;i++)el(G,"line",{x1:lx,y1:ay+i*ah/8,x2:lx+ll,y2:ay+i*ah/8,stroke:"#fff","stroke-width":.08});
+for(let i=0;i<8;i++)el(G,"text",{x:lx+.8,y:ay+i*ah/8+.9,"font-size":.75,fill:"#fff"},i+1);
+for(let m=0;m<=ll;m+=10)el(G,"line",{x1:lx+m,y1:ay,x2:lx+m,y2:ay+ah,stroke:"#fff","stroke-width":.06,"stroke-dasharray":".3 .3"});
+el(G,"text",{x:16,y:ay+ah/2+.3,"text-anchor":"middle","font-size":1,fill:"#7a2a18"},"ZONA DE FRENADA · 30 m");
+el(G,"text",{x:lx+ll/2,y:ay+ah/2+.4,"text-anchor":"middle","font-size":1.4,fill:"#fff","font-weight":"bold"},"A · VELOCIDAD · 8 CALLES × 60 m");
+
+// ZONA B · Saltos horizontales
+el(G,"rect",{x:19.1,y:14.2,width:8.7,height:4,fill:"#e8b04a",stroke:"#000","stroke-width":.12});
+el(G,"text",{x:23.4,y:16.5,"text-anchor":"middle","font-size":.8},"FOSO");
+el(G,"rect",{x:27.8,y:15,width:50.4,height:1.1,fill:"#d9c27a",stroke:"#000","stroke-width":.08});
+el(G,"rect",{x:27.8,y:16.4,width:50.4,height:1.1,fill:"#d9c27a",stroke:"#000","stroke-width":.08});
+el(G,"rect",{x:77.3,y:12.7,width:7.7,height:5.9,fill:"#f3e3b8",stroke:"#000","stroke-width":.12});
+el(G,"text",{x:81.15,y:15.9,"text-anchor":"middle","font-size":.8},"ZONA PÉRTIGA");
+el(G,"text",{x:53,y:14.2,"text-anchor":"middle","font-size":1,"font-weight":"bold"},"B · SALTO DE LONGITUD / PÉRTIGA");
+el(G,"text",{x:53,y:18.8,"text-anchor":"middle","font-size":1,"font-weight":"bold"},"TRIPLE SALTO");
+
+// ZONA C · Salto de altura
+el(G,"rect",{x:7.8,y:14.7,width:5.8,height:3.9,fill:"#e8b04a",stroke:"#000","stroke-width":.12});
+el(G,"text",{x:10.7,y:16.4,"text-anchor":"middle","font-size":.8,"font-weight":"bold"},"C · SALTO");
+el(G,"text",{x:10.7,y:17.4,"text-anchor":"middle","font-size":.8,"font-weight":"bold"},"ALTURA");
+
+// Pistas 1 y 2 (≈38,7 x 19,2 m)
+function court(x,y,label){
+  const w=38.7,h=19.2,g=el(G,"g",{transform:`translate(${x} ${y})`});
+  el(g,"rect",{x:0,y:0,width:w,height:h,fill:"#2f6fb3"});
+  const st={fill:"none",stroke:"#fff","stroke-width":.12};
+  el(g,"rect",{x:0,y:0,width:w,height:h,...st});
+  el(g,"line",{x1:w/2,y1:0,x2:w/2,y2:h,...st});
+  el(g,"circle",{cx:w/2,cy:h/2,r:3,...st});
+  [[0,1],[w,-1]].forEach(([px,d])=>{
+    const yc=h/2;
+    el(g,"path",{d:`M${px},${yc-7.5} A6,6 0 0 ${d>0?1:0} ${px+6*d},${yc-1.5} L${px+6*d},${yc+1.5} A6,6 0 0 ${d>0?1:0} ${px},${yc+7.5}`,...st});
+    el(g,"circle",{cx:px+6*d,cy:yc,r:.18,fill:"#fff"});
+    el(g,"circle",{cx:px+10*d,cy:yc,r:.18,fill:"#fff"});
+    el(g,"rect",{x:d>0?px-.9:px,y:yc-1.5,width:.9,height:3,fill:"#fff",opacity:.8});
+  });
+  el(g,"text",{x:w/2,y:h/2+.5,"text-anchor":"middle","font-size":1.5,fill:"#fff","font-weight":"bold"},label);
+  el(g,"text",{x:w/2,y:h-.8,"text-anchor":"middle","font-size":.85,fill:"#fff"},"≈ 38,7 × 19,2 m");
+}
+court(2.0,21.5,"D · PISTA 1");
+court(51.3,21.5,"E · PISTA 2");
+
+// Cotas
+function dimH(x1,x2,y,t){
+  el(G,"line",{x1,y1:y,x2,y2:y,stroke:"#000","stroke-width":.07});
+  [x1,x2].forEach(x=>el(G,"line",{x1:x-.3,y1:y+.3,x2:x+.3,y2:y-.3,stroke:"#000","stroke-width":.09}));
+  el(G,"text",{x:(x1+x2)/2,y:y-.4,"text-anchor":"middle","font-size":.9},t);
+}
+function dimV(x,y1,y2,t){
+  el(G,"line",{x1:x,y1,x2:x,y2,stroke:"#000","stroke-width":.07});
+  [y1,y2].forEach(y=>el(G,"line",{x1:x-.3,y1:y+.3,x2:x+.3,y2:y-.3,stroke:"#000","stroke-width":.09}));
+  el(G,"text",{x:x-.5,y:(y1+y2)/2,"text-anchor":"middle","font-size":.9,transform:`rotate(-90 ${x-.5} ${(y1+y2)/2})`},t);
+}
+dimH(0,W,H+3.4,"≈ 92,0 m");
+dimV(-2.8,0,H,"≈ 43,4 m");
+dimH(lx,lx+ll,-0.9,"60,00 m (8 calles)");
+dimH(2.0,40.7,H+1.7,"≈ 38,7");
+dimH(51.3,90.0,H+1.7,"≈ 38,7");
+dimH(1,31,-0.9,"30,00 m");
+dimV(W+.9+0.0,ay,ay+ah,"9,76");
+
+// Norte y escala gráfica
+const n=el(S,"g",{transform:"translate(397 26)"});
+el(n,"circle",{r:7,fill:"#fff",stroke:"#000","stroke-width":.3});
+el(n,"path",{d:"M0,-6 L2.2,4 L0,2.2 L-2.2,4Z",fill:"#000"});
+el(n,"text",{y:-9,"text-anchor":"middle","font-size":4,"font-weight":"bold"},"N");
+const sc=el(S,"g",{transform:"translate(30 278)"});
+for(let i=0;i<4;i++)el(sc,"rect",{x:i*10,y:0,width:10,height:2.2,fill:i%2?"#fff":"#000",stroke:"#000","stroke-width":.3});
+[0,10,20,30,40].forEach((v,i)=>el(sc,"text",{x:i*10,y:6,"text-anchor":"middle","font-size":2.6},v/5*1+"")); // 10 mm = 2 m
+sc.querySelectorAll("text").forEach((t,i)=>t.textContent=(i*2.5));
+el(sc,"text",{x:46,y:6,"font-size":2.6},"m");
+el(sc,"text",{x:0,y:-2,"font-size":3},"ESCALA GRÁFICA");
+
+// Leyenda y cuadro de superficies
+const L=el(S,"g",{transform:"translate(30 238)"});
+el(L,"text",{x:0,y:0,"font-size":4,"font-weight":"bold"},"CUADRO DE ZONAS Y SUPERFICIES (aprox.)");
+const rows=[
+ ["A","Atletismo: 8 calles × 60 m + frenada","#c8553d","90 × 9,76 m","≈ 880 m²"],
+ ["B","Saltos de longitud / triple / pértiga","#e8b04a","≈ 66 × 6 m","≈ 400 m²"],
+ ["C","Salto de altura","#e8b04a","5,8 × 3,9 m","≈ 23 m²"],
+ ["D","Pista 1 multideporte","#2f6fb3","≈ 38,7 × 19,2 m","≈ 743 m²"],
+ ["E","Pista 2 multideporte","#2f6fb3","≈ 38,7 × 19,2 m","≈ 743 m²"],
+ ["","Recinto total del módulo","#fff","≈ 92,0 × 43,4 m","≈ 3.990 m²"]];
+rows.forEach((r,i)=>{
+  const y=6+i*5;
+  el(L,"rect",{x:0,y:y-3,width:4,height:3.4,fill:r[2],stroke:"#000","stroke-width":.2});
+  el(L,"text",{x:2,y:y-.4,"text-anchor":"middle","font-size":2.4,fill:r[2]=="#fff"||r[2]=="#e8b04a"?"#000":"#fff","font-weight":"bold"},r[0]);
+  el(L,"text",{x:6,y:y-.2,"font-size":2.9,"font-weight":i==5?"bold":"normal"},r[1]);
+  el(L,"text",{x:100,y:y-.2,"font-size":2.9},r[3]);
+  el(L,"text",{x:132,y:y-.2,"font-size":2.9,"font-weight":"bold"},r[4]);
+});
+
+// Notas
+const N=el(S,"g",{transform:"translate(187 240)"});
+const notes=["NOTAS:",
+ "1. Base: plano «Mejora de pistas multideporte, Polideportivo Juan",
+ "    Carlos I» (Ayto. Ciudad Real, ref. 09 23 10). Cotas medidas sobre",
+ "    plano; verificar con levantamiento topográfico.",
+ "2. Memoria: pistas 2.148,80 m² y módulo de atletismo 1.843,37 m²",
+ "    (superficies de pavimento, incluyen zonas de seguridad).",
+ "3. Recta: 8 × 60 m + 30 m de frenada (memoria). Zona pértiga a confirmar."];
+notes.forEach((t,i)=>el(N,"text",{x:0,y:i*4,"font-size":2.3,"font-weight":i?"normal":"bold"},t));
+
+// Cajetín
+const C=el(S,"g",{transform:"translate(287 236)"});
+el(C,"rect",{x:0,y:0,width:125,height:52,fill:"#fff",stroke:"#000","stroke-width":.5});
+[[0,14,125],[0,29,125],[0,41,125]].forEach(([x,y,w])=>el(C,"line",{x1:x,y1:y,x2:x+w,y2:y,stroke:"#000","stroke-width":.3}));
+el(C,"line",{x1:88,y1:14,x2:88,y2:52,stroke:"#000","stroke-width":.3});
+el(C,"text",{x:3,y:5,"font-size":2.6,fill:"#555"},"PROMOTOR / ENTIDAD");
+el(C,"text",{x:3,y:12,"font-size":4.5,"font-weight":"bold"},"[ completar ]");
+el(C,"text",{x:3,y:18,"font-size":2.4,fill:"#555"},"PROYECTO");
+el(C,"text",{x:3,y:25.5,"font-size":3.6,"font-weight":"bold"},"MÓDULO DE TECNIFICACIÓN DEPORTIVA");
+el(C,"text",{x:3,y:33,"font-size":2.4,fill:"#555"},"PLANO");
+el(C,"text",{x:3,y:38.5,"font-size":3.2,"font-weight":"bold"},"PLANTA GENERAL DE DISTRIBUCIÓN");
+el(C,"text",{x:3,y:44.5,"font-size":2.4,fill:"#555"},"REDACTOR");
+el(C,"text",{x:3,y:50,"font-size":3.2},"[ completar ]");
+el(C,"text",{x:91,y:18,"font-size":2.6,fill:"#555"},"ESCALA (A3)");
+el(C,"text",{x:91,y:26.5,"font-size":6,"font-weight":"bold"},"1:250");
+el(C,"text",{x:91,y:33,"font-size":2.6,fill:"#555"},"FECHA");
+el(C,"text",{x:91,y:38.5,"font-size":3.6},"OCTUBRE 2026");
+el(C,"text",{x:91,y:44.5,"font-size":2.6,fill:"#555"},"PLANO Nº");
+el(C,"text",{x:91,y:50,"font-size":3.6,"font-weight":"bold"},"01 / 01");
+</script>
+</body>
+</html>

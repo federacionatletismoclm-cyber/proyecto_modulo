@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Plano Módulo de Tecnificación</title>
+<style>
+  body{font-family:Segoe UI,Arial,sans-serif;margin:0;background:#f4f6f8;color:#1c2733}
+  header{background:#12355b;color:#fff;padding:18px 28px}
+  header h1{margin:0;font-size:22px} header p{margin:4px 0 0;opacity:.8;font-size:14px}
+  section{background:#fff;margin:20px auto;max-width:1100px;padding:18px 24px;border-radius:10px;box-shadow:0 1px 4px #0002}
+  h2{margin:0 0 4px;font-size:18px;color:#12355b} .sub{margin:0 0 12px;font-size:13px;color:#566}
+  svg{width:100%;height:auto;border:1px solid #cfd8e0;border-radius:6px;background:#dfe7dc}
+  .legend{display:flex;flex-wrap:wrap;gap:16px;font-size:13px;margin-top:10px}
+  .legend span::before{content:"";display:inline-block;width:14px;height:14px;margin-right:6px;vertical-align:-2px;border:1px solid #0004}
+  .l1::before{background:#2f6fb3}.l2::before{background:#c8553d}.l3::before{background:#e8b04a}.l4::before{background:#7aa874}
+  table{border-collapse:collapse;width:100%;font-size:13px;margin-top:8px}
+  td,th{border:1px solid #d5dde4;padding:6px 8px;text-align:left} th{background:#eef2f6}
+  @media print{body{background:#fff}section{box-shadow:none;page-break-inside:avoid}}
+</style>
+</head>
+<body>
+<header>
+  <h1>Módulo de Tecnificación · Plano de instalaciones</h1>
+  <p>2 pistas de fútbol sala (40 × 20 m) + calles de atletismo (6 calles × 1,22 m) · Esquema a escala · Cotas en metros</p>
+</header>
+
+<section>
+  <h2>Opción A · Pistas en línea (longitudinal)</h2>
+  <p class="sub">Dos pistas dispuestas una a continuación de la otra (80 m) con la recta de atletismo paralela a todo el conjunto.</p>
+  <svg id="A" viewBox="0 0 92 40"></svg>
+  <div class="legend"><span class="l1">Pista fútbol sala</span><span class="l2">Calles de atletismo</span><span class="l3">Zona técnica / material</span><span class="l4">Zona de recuperación</span></div>
+</section>
+
+<section>
+  <h2>Opción B · Pistas en paralelo</h2>
+  <p class="sub">Dos pistas una al lado de la otra (40 × 42 m) con la recta de atletismo de 60 m en el lateral largo.</p>
+  <svg id="B" viewBox="0 0 76 62"></svg>
+  <div class="legend"><span class="l1">Pista fútbol sala</span><span class="l2">Calles de atletismo</span><span class="l3">Zona técnica / material</span><span class="l4">Zona de recuperación</span></div>
+</section>
+
+<section>
+  <h2>Comparativa</h2>
+  <table>
+    <tr><th></th><th>A · Longitudinal</th><th>B · Paralelo</th></tr>
+    <tr><td>Superficie ocupada aprox.</td><td>≈ 92 × 40 m (3.680 m²)</td><td>≈ 76 × 62 m (4.710 m²)</td></tr>
+    <tr><td>Recta de atletismo</td><td>80 m útiles (60/80 m)</td><td>60 m útiles + 8 m salida/frenada</td></tr>
+    <tr><td>Ventaja</td><td>Compacto, recta larga, un solo frente de trabajo</td><td>Dos grupos simultáneos con visión cruzada, más fácil de vallar por zonas</td></tr>
+    <tr><td>Inconveniente</td><td>Las pistas quedan alejadas entre sí en los extremos</td><td>Recta más corta y mayor superficie total</td></tr>
+  </table>
+  <p class="sub" style="margin-top:10px">Medidas reglamentarias de referencia: pista 40 × 20 m (rango 38–42 × 18–22), calle de atletismo 1,22 m, área de portería con radio 6 m, centro Ø 6 m. Adaptar a las medidas reales del terreno.</p>
+</section>
+
+<script>
+const NS="http://www.w3.org/2000/svg";
+function el(p,n,a,t){const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);if(t!==undefined)e.textContent=t;p.appendChild(e);return e}
+
+function court(s,x,y,label){
+  const g=el(s,"g",{});
+  el(g,"rect",{x:x-1.5,y:y-1.5,width:43,height:23,fill:"#2f6fb3",opacity:.35});
+  el(g,"rect",{x,y,width:40,height:20,fill:"#2f6fb3"});
+  const st={fill:"none",stroke:"#fff","stroke-width":.15};
+  el(g,"rect",{x,y,width:40,height:20,...st});
+  el(g,"line",{x1:x+20,y1:y,x2:x+20,y2:y+20,...st});
+  el(g,"circle",{cx:x+20,cy:y+10,r:3,...st});
+  // áreas (cuartos de círculo r=6 desde los postes)
+  [[0,1],[40,-1]].forEach(([dx,d])=>{
+    const px=x+dx;
+    el(g,"path",{d:`M${px},${y+7} A6,6 0 0 ${d>0?1:0} ${px+6*d},${y+10} A6,6 0 0 ${d>0?1:0} ${px},${y+13}`,...st});
+    el(g,"line",{x1:px+6*d,y1:y+7,x2:px+6*d,y2:y+13,...st});
+    el(g,"circle",{cx:px+6*d,cy:y+10,r:.2,fill:"#fff"});
+    el(g,"circle",{cx:px+10*d,cy:y+10,r:.2,fill:"#fff"});
+    el(g,"rect",{x:d>0?px-1:px,y:y+8.5,width:1,height:3,fill:"#fff",opacity:.8});
+  });
+  el(g,"text",{x:x+20,y:y+10.3,"text-anchor":"middle","font-size":1.6,fill:"#fff","font-weight":"bold"},label);
+  dimH(s,x,x+40,y+22.2,"40 m");
+  dimV(s,x-2.2,y,y+20,"20 m");
+}
+function lanes(s,x,y,len,n){
+  const w=1.22;
+  el(s,"rect",{x,y,width:len,height:w*n,fill:"#c8553d"});
+  for(let i=0;i<=n;i++)el(s,"line",{x1:x,y1:y+i*w,x2:x+len,y2:y+i*w,stroke:"#fff","stroke-width":.1});
+  for(let i=0;i<n;i++)el(s,"text",{x:x+.5,y:y+i*w+.85,"font-size":.8,fill:"#fff"},i+1);
+  for(let m=0;m<=len;m+=10)el(s,"line",{x1:x+m,y1:y,x2:x+m,y2:y+w*n,stroke:"#fff","stroke-width":.08,"stroke-dasharray":".3 .3"});
+  el(s,"text",{x:x+len/2,y:y-.7,"text-anchor":"middle","font-size":1.2,fill:"#7a2a18","font-weight":"bold"},`CALLES DE ATLETISMO · ${n} × 1,22 m · ${len} m`);
+  dimV(s,x+len+1.2,y,y+w*n,"7,32 m");
+}
+function zone(s,x,y,w,h,color,txt){
+  el(s,"rect",{x,y,width:w,height:h,fill:color,opacity:.85,stroke:"#0006","stroke-width":.1,"stroke-dasharray":".4 .3"});
+  el(s,"text",{x:x+w/2,y:y+h/2+.4,"text-anchor":"middle","font-size":1,fill:"#222"},txt);
+}
+function dimH(s,x1,x2,y,t){
+  el(s,"line",{x1,y1:y,x2,y2:y,stroke:"#333","stroke-width":.08});
+  el(s,"line",{x1,y1:y-.4,x2:x1,y2:y+.4,stroke:"#333","stroke-width":.08});
+  el(s,"line",{x1:x2,y1:y-.4,x2,y2:y+.4,stroke:"#333","stroke-width":.08});
+  el(s,"text",{x:(x1+x2)/2,y:y+1.1,"text-anchor":"middle","font-size":.9,fill:"#222"},t);
+}
+function dimV(s,x,y1,y2,t){
+  el(s,"line",{x1:x,y1,x2:x,y2,stroke:"#333","stroke-width":.08});
+  el(s,"line",{x1:x-.4,y1,x2:x+.4,y2:y1,stroke:"#333","stroke-width":.08});
+  el(s,"line",{x1:x-.4,y1:y2,x2:x+.4,y2,stroke:"#333","stroke-width":.08});
+  const tx=el(s,"text",{x:x-.5,y:(y1+y2)/2,"text-anchor":"middle","font-size":.9,fill:"#222",transform:`rotate(-90 ${x-.5} ${(y1+y2)/2})`},t);
+}
+function north(s,x,y){
+  el(s,"circle",{cx:x,cy:y,r:1.6,fill:"#fff",stroke:"#333","stroke-width":.1});
+  el(s,"path",{d:`M${x},${y-1.3} L${x+.6},${y+.8} L${x},${y+.4} L${x-.6},${y+.8}Z`,fill:"#12355b"});
+  el(s,"text",{x,y:y-2,"text-anchor":"middle","font-size":.9,fill:"#222"},"N");
+}
+
+// ---------- Opción A ----------
+(function(){
+  const s=document.getElementById("A");
+  lanes(s,5,3,80,6);
+  court(s,5,14,"PISTA 1");
+  court(s,47,14,"PISTA 2");
+  zone(s,45.2,14,1.6,20,"#e8b04a","");            // pasillo entre pistas
+  zone(s,5,10.8,80,1.6,"#e8b04a","ZONA TÉCNICA · conos, vallas, material");
+  zone(s,86.5,3,4.5,7.32,"#7aa874","Frenada");
+  zone(s,5,36.8,80,2,"#7aa874","BANQUILLOS · RECUPERACIÓN · HIDRATACIÓN");
+  dimH(s,5,85,12.9,"");
+  north(s,89,36);
+})();
+
+// ---------- Opción B ----------
+(function(){
+  const s=document.getElementById("B");
+  lanes(s,5,3,60,6);
+  zone(s,66,3,6,7.32,"#7aa874","Frenada");
+  zone(s,5,10.8,60,1.6,"#e8b04a","ZONA TÉCNICA · material");
+  court(s,5,14,"PISTA 1");
+  court(s,5,38,"PISTA 2");
+  zone(s,47,14,25,20,"#e8b04a","VESTUARIOS / ALMACÉN");
+  zone(s,47,38,25,20,"#7aa874","RECUPERACIÓN · GRADA");
+  north(s,73,59);
+})();
+</script>
+</body>
+</html>
