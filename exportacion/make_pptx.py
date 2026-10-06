@@ -105,16 +105,16 @@ def logos(s, x, y):
 
 def badge(s, x, y, d, fill, label, color='FFFFFF', size=None):
     c = rect(s, x, y, d, d, fill, shape=MSO_SHAPE.OVAL)
-    text(s, x, y, d, d, label, size or d * 0.5, color, HEAD, True, PP_ALIGN.CENTER, MSO_ANCHOR.MIDDLE)
+    text(s, x, y, d, d, label, size or d * 0.5, color, 'Segoe UI Symbol' if label == '✓' else HEAD, True, PP_ALIGN.CENTER, MSO_ANCHOR.MIDDLE)
 
 # 1 · Portada ---------------------------------------------------------------
 s = new(NAVY, 'Bienvenida. Presentamos el proyecto de mejora de las pistas multideporte del Polideportivo Juan Carlos I: qué problema resuelve, por qué es necesario y cómo será el nuevo módulo.')
 pic(s, 'r_ext.jpg', 0, 0, 1920, 1080)
 grad(s, 0, 0, 1920, 1080, 0, [(0, NAVY, 94), (42, NAVY, 78), (100, NAVY, 5)])
 logos(s, 128, 80)
-text(s, 128, 494, 1100, 36, 'POLIDEPORTIVO JUAN CARLOS I · CIUDAD REAL', 28, 'F29A4A', BODY, True, spacing=4)
-text(s, 128, 550, 1150, 280, 'MEJORA DE PISTAS MULTIDEPORTE', 136, LIGHT, HEAD, True, line=0.92)
-text(s, 128, 846, 960, 110, 'Un espacio cubierto para entrenar, competir y crecer todo el año.', 42, 'E3EAF2')
+text(s, 128, 466, 1100, 36, 'POLIDEPORTIVO JUAN CARLOS I · CIUDAD REAL', 28, 'F29A4A', BODY, True, spacing=4)
+text(s, 128, 520, 1150, 320, 'MEJORA DE PISTAS MULTIDEPORTE', 136, LIGHT, HEAD, True, line=0.92)
+text(s, 128, 868, 960, 110, 'Un espacio cubierto para entrenar, competir y crecer todo el año.', 42, 'E3EAF2')
 
 # 2 · Hoy ------------------------------------------------------------------
 s = new(LIGHT, 'Empezamos por la realidad: tenemos un espacio cubierto muy grande, pero que no rinde todo lo que podría. El pavimento está desgastado y la nave está abierta al exterior.')
@@ -151,7 +151,7 @@ text(s, 980, 876, 812, 40, 'EL MÓDULO', 30, 'B95A0C', BODY, True, spacing=3)
 # 5 · Respuesta -----------------------------------------------------------
 s = new(NAVY, 'La respuesta es sencilla de explicar: aprovechar el mismo espacio para tres cosas. Dos pistas multideporte, un módulo de atletismo cubierto y una nave renovada que lo protege todo.')
 text(s, 128, 118, 800, 36, 'LA RESPUESTA', 28, 'F29A4A', BODY, True, spacing=4)
-text(s, 128, 170, 800, 520, 'DOS PISTAS Y UN MÓDULO DE ATLETISMO, BAJO UNA MISMA CUBIERTA', 96, LIGHT, HEAD, True, line=0.95)
+text(s, 128, 170, 800, 520, 'DOS PISTAS Y UN MÓDULO DE ATLETISMO, BAJO UNA MISMA CUBIERTA', 88, LIGHT, HEAD, True, line=0.95)
 for i, (t, w, f, c) in enumerate([('2 pistas multideporte', 420, ORANGE, NAVY), ('1 módulo de atletismo cubierto', 560, GREEN, LIGHT), ('1 nave renovada y protegida', 520, BLUE, NAVY)]):
     y = 720 + i * 82
     rect(s, 128, y, w, 66, f, radius=12)
