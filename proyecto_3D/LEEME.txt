@@ -1,0 +1,12 @@
+PROYECTO 3D - MODULO DE TECNIFICACION (nave ~92 x 43,4 m)
+
+modulo_tecnificacion.glb ....... Modelo 3D (glTF binario): geometria y texturas. Abre en Blender, SketchUp (con importador glTF), 3ds Max, Windows 3D Viewer, visores web (gltf-viewer.donmccurdy.com).
+modulo_tecnificacion_3D.html ... Visor interactivo en el navegador (necesita internet para cargar three.js).
+renders/ ....................... Imagenes fijas 4K (exterior, interior, atletismo).
+lamina_modulo_tecnificacion_A3.html ... Lamina de planta A3, escala 1:250.
+plano_modulo_tecnificacion.html ........ Plano esquematico.
+
+Unidades del modelo: metros. Eje X = largo de la nave (0-92), Z = ancho (0-43,4), Y = altura.
+Notas: medidas estimadas a partir del plano base y la memoria; verificar con levantamiento topografico.
+
+Version adaptada a los alzados reformados (Ayto. Ciudad Real, ref. 09 23 06): cubierta quebrada en 3 tramos, zocalo 1,36 m, 10 vanos de 9,2 m con cruces en vanos 2 y 9, puertas en vanos 4 y 7, puerta enrollable en el lado este, friso de logos en la franja superior 4,40-7,00 m y logo del Ayuntamiento en el hastial.
