@@ -171,12 +171,12 @@ for n, cx, cy in [('1', 1126, 464), ('2', 1032, 572), ('3', 686, 738), ('4', 123
     badge(s, cx - 32, cy - 32, 64, ORANGE, n, NAVY, 36)
 
 # 6 · Atletismo -----------------------------------------------------------
-s = new(NAVY, 'Este es el corazón del proyecto: un módulo de atletismo cubierto, con ocho calles de sesenta metros y zonas de salto. Se entrega homologado por la Real Federación Española de Atletismo. Permite entrenar y tecnificar todo el año, llueva o haga frío.')
+s = new(NAVY, 'Este es el corazón del proyecto: un módulo de atletismo cubierto, con ocho calles de noventa metros, zona de frenada incluida, y zonas de salto. Se entrega homologado por la Real Federación Española de Atletismo. Permite entrenar y tecnificar todo el año, llueva o haga frío.')
 pic(s, 'r_atl.jpg', 0, 0, 1920, 1080)
 grad(s, 0, 0, 1920, 1080, 90, [(0, NAVY, 90), (38, NAVY, 25), (60, NAVY, 35), (100, NAVY, 94)])
 text(s, 128, 96, 1000, 36, 'EL MÓDULO DE ATLETISMO', 28, 'F29A4A', BODY, True, spacing=4)
 text(s, 128, 144, 1400, 250, 'ATLETISMO DE VERDAD, BAJO CUBIERTA', 104, LIGHT, HEAD, True, line=0.95)
-stats = [('8', 'calles de velocidad', ORANGE), ('60 m', 'de recta para trabajar la velocidad', ORANGE),
+stats = [('8', 'calles de velocidad', ORANGE), ('90 m', 'de pista de velocidad, con zona de frenada', ORANGE),
          ('4', 'zonas de salto: altura, longitud, triple y pértiga', ORANGE), ('RFEA', 'módulo homologado por la federación', GREEN)]
 for i, (n, l, c) in enumerate(stats):
     x = 128 + i * (380 + 48)
@@ -193,6 +193,31 @@ for t, x, y, w in [('Fútbol sala', 128, 610, 220), ('Baloncesto', 364, 610, 220
     text(s, x, y, w, 58, t, 30, NAVY, BODY, True, PP_ALIGN.CENTER, MSO_ANCHOR.MIDDLE)
 text(s, 128, 780, 720, 200, 'Cortinas motorizadas separan las pistas entre sí y del atletismo: varios grupos entrenan a la vez, sin molestarse.', 34, '3E4C5E', line=1.05)
 pic(s, 'r_cancha.jpg', 920, 190, 900, 700)
+
+# 7b · Superficies y fases ------------------------------------------------
+s = new(LIGHT, 'Cada zona lleva su propia superficie. En atletismo, un tartán sintético poroso, aplicado in situ y homologado por la RFEA. En las pistas multideporte, un pavimento de PVC o resinas, como el de los pabellones cubiertos. Como las superficies son independientes, la obra puede hacerse por fases y adaptar el orden. El proyecto estima unos seis meses en total.')
+text(s, 128, 72, 1000, 36, 'LAS SUPERFICIES', 28, 'B95A0C', BODY, True, spacing=4)
+text(s, 128, 112, 1664, 100, 'DOS SUPERFICIES, CADA UNA PARA LO SUYO', 80, NAVY, HEAD, True)
+cards = [(128, 'r_atl.jpg', 'ATLETISMO', GREEN, LIGHT, 200, 'TARTÁN SINTÉTICO',
+          ['Poroso y aplicado in situ', 'Acabado en azul con resina roja', 'Homologado por la RFEA']),
+         (976, 'r_cancha.jpg', 'PISTAS MULTIDEPORTE', ORANGE, NAVY, 420, 'PAVIMENTO DE PVC O RESINAS',
+          ['Como en los pabellones cubiertos', 'Para fútbol sala, baloncesto, voleibol y tenis', 'Líneas de cada deporte en la misma pista'])]
+for x, img, tag, fc, tc, tw, title, buls in cards:
+    rect(s, x, 230, 816, 525, 'FFFFFF', radius=20)
+    pic(s, img, x, 230, 816, 200)
+    rect(s, x + 36, 460, tw, 44, fc, radius=22)
+    text(s, x + 36, 460, tw, 44, tag, 26, tc, BODY, True, PP_ALIGN.CENTER, MSO_ANCHOR.MIDDLE, spacing=3)
+    text(s, x + 36, 518, 744, 62, title, 50, NAVY, HEAD, True)
+    for i, b in enumerate(buls):
+        text(s, x + 36, 592 + i * 50, 744, 44, '•  ' + b, 30, '3E4C5E')
+text(s, 128, 783, 1664, 50, 'SE PUEDE EJECUTAR POR FASES', 40, NAVY, HEAD, True, spacing=2)
+for i, lab in enumerate(['1 · Módulo de atletismo', '2 · Pistas multideporte', '3 · Cubierta y cerramiento']):
+    cx = 128 + i * (517 + 56)
+    rect(s, cx, 846, 517, 66, NAVY, radius=14)
+    text(s, cx, 846, 517, 66, lab, 28, LIGHT, BODY, True, PP_ALIGN.CENTER, MSO_ANCHOR.MIDDLE)
+    if i < 2:
+        text(s, cx + 517, 846, 56, 66, '→', 40, ORANGE, BODY, True, PP_ALIGN.CENTER, MSO_ANCHOR.MIDDLE)
+text(s, 128, 930, 1664, 40, 'Cada superficie es independiente, así que el orden se puede adaptar. Estimación del proyecto: unos 6 meses en total.', 26, '3E4C5E')
 
 # 8 · Nave -----------------------------------------------------------------
 s = new(NAVY, 'La nave también se renueva: nueva cubierta aislante, un cerramiento que deja pasar la luz, y un entorno exterior más cómodo y accesible. El resultado es un espacio protegido de la lluvia, el frío, el viento y las aves.')
