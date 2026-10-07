@@ -175,7 +175,7 @@ s = new(NAVY, 'Este es el corazón del proyecto: un módulo de atletismo cubiert
 pic(s, 'r_atl.jpg', 0, 0, 1920, 1080)
 grad(s, 0, 0, 1920, 1080, 90, [(0, NAVY, 90), (38, NAVY, 25), (60, NAVY, 35), (100, NAVY, 94)])
 text(s, 128, 96, 1000, 36, 'EL MÓDULO DE ATLETISMO', 28, 'F29A4A', BODY, True, spacing=4)
-text(s, 128, 144, 1400, 250, 'ATLETISMO DE VERDAD, BAJO CUBIERTA', 104, LIGHT, HEAD, True, line=0.95)
+text(s, 128, 144, 1400, 250, 'ATLETISMO, BAJO CUBIERTA', 104, LIGHT, HEAD, True, line=0.95)
 stats = [('8', 'calles de velocidad', ORANGE), ('90 m', 'de pista de velocidad, con zona de frenada', ORANGE),
          ('4', 'zonas de salto: altura, longitud, triple y pértiga', ORANGE), ('RFEA', 'módulo homologado por la federación', GREEN)]
 for i, (n, l, c) in enumerate(stats):
@@ -198,9 +198,9 @@ pic(s, 'r_cancha.jpg', 920, 190, 900, 700)
 s = new(LIGHT, 'Cada zona lleva su propia superficie. En atletismo, un tartán sintético poroso, aplicado in situ y homologado por la RFEA. En las pistas multideporte, un pavimento de PVC o resinas, como el de los pabellones cubiertos. Como las superficies son independientes, la obra puede hacerse por fases y adaptar el orden. El proyecto estima unos seis meses en total.')
 text(s, 128, 72, 1000, 36, 'LAS SUPERFICIES', 28, 'B95A0C', BODY, True, spacing=4)
 text(s, 128, 112, 1664, 100, 'DOS SUPERFICIES, CADA UNA PARA LO SUYO', 80, NAVY, HEAD, True)
-cards = [(128, 's_tartan.jpg', 'ATLETISMO', GREEN, LIGHT, 200, 'TARTÁN SINTÉTICO',
+cards = [(128, 'sup_tartan.jpg', 'ATLETISMO', GREEN, LIGHT, 200, 'TARTÁN SINTÉTICO',
           ['Poroso y aplicado in situ', 'Acabado en azul con resina roja', 'Homologado por la RFEA']),
-         (976, 's_pvc.jpg', 'PISTAS MULTIDEPORTE', ORANGE, NAVY, 420, 'PAVIMENTO DE PVC O RESINAS',
+         (976, 'sup_pvc.jpg', 'PISTAS MULTIDEPORTE', ORANGE, NAVY, 420, 'PAVIMENTO DE PVC O RESINAS',
           ['Como en los pabellones cubiertos', 'Para fútbol sala, baloncesto, voleibol y tenis', 'Líneas de cada deporte en la misma pista'])]
 for x, img, tag, fc, tc, tw, title, buls in cards:
     rect(s, x, 230, 816, 575, 'FFFFFF', radius=20)
