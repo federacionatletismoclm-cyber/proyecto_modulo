@@ -6,7 +6,8 @@ blob = {'e89149e6f449d98f173b1a860eca0256': 'antes.jpg', 'e8cf135e02e33058e73607
         'eb84ed1ea9d4b4b0b0a5b9aadc0f0561': 'logo_deporte.png', '2d5361146f1b2b363bdda74291bf9bae': 'r_ext.jpg',
         '1a8ef46b99927379a91ad6b841399350': 'r_int.jpg', '59bce7d2b685216ae58a7029d9d79dc7': 'r_atl2.jpg',
         '0b20d112a1c70fd6b47dc0aa655be8a1': 'r_cancha.jpg', 'ea9f176d1c8184eeb564ca2af98bfcf5': 'r_atl.jpg',
-        'c7f31533d775e75be2464d9c850b0f17': 'r_planta.jpg'}
+        'c7f31533d775e75be2464d9c850b0f17': 'r_planta.jpg',
+        '2062f69c52e94a176fc9efd64a3cad71': 's_tartan.jpg', '8f307585602fac63637e8ea2eaef156e': 's_pvc.jpg'}
 icons = {'Warning': '<path d="M12 3 22 20H2Z"/><path d="M12 10v5"/><path d="M12 17.5v.5"/>',
          'Cloud': '<path d="M7 18a4 4 0 0 1-.5-8 5.5 5.5 0 0 1 10.6-1A4.5 4.5 0 0 1 17 18Z"/>',
          'Users': '<circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.5 3-6 6-6s6 2.5 6 6"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14c3 0 5 2 5 5"/>',
